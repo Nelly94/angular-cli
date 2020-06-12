@@ -1,0 +1,4 @@
+<p>Product list</p>
+<div style="background-color:mediumvioletred;border: 1px solid black">{{selectedProduct}}</div>
+<app-product [p]="product1" (outputSelection)="updateSelection($event)"></app-product>
+<app-product [p]="product2" (outputSelection)="updateSelection($event)"></app-product>
