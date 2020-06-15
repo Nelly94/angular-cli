@@ -1,5 +1,6 @@
 import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../model/Product';
+import {ProductService} from '../product.service';
 
 @Component({
   selector: 'app-product',
@@ -8,7 +9,7 @@ import {Product} from '../model/Product';
 })
 export class ProductComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
   @Output()
   outputSelection: EventEmitter<string> = new EventEmitter();
@@ -22,5 +23,9 @@ export class ProductComponent implements OnInit {
   @HostListener('click')
   callParent() {
     this.outputSelection.emit(this.p.name);
+  }
+
+  delete(){
+    this.productService.delete(this.p.id);
   }
 }

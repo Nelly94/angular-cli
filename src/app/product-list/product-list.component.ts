@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../model/Product';
+import {ProductService} from '../product.service';
 
 @Component({
   selector: 'app-product-list',
@@ -8,17 +9,14 @@ import {Product} from '../model/Product';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private productService: ProductService) { }
 
-  // product1: Product;
-  // product2: Product;
   selectedProduct: string;
-  products = [new Product('Vodka bottle',  'Best russian alcohol', 10, null),
-              new Product('Jamón', 'From Extremadura', 98, 15),
-              new Product('Caviar', 'Top quality', 9568, 2)];
   productFilterInput = '';
+  productList: Product[];
 
   ngOnInit(): void {
+    this.productService.getProducts().then(list => {this.productList = list;});
   }
 
   updateSelection(productName: string){
@@ -27,7 +25,7 @@ export class ProductListComponent implements OnInit {
 
   filter(){
     console.log(this.productFilterInput);
-    return this.products.filter(c => c.name.toLocaleLowerCase().indexOf(this.productFilterInput.toLocaleLowerCase()) !== -1);
+    return this.productList.filter(c => c.name.toLocaleLowerCase().indexOf(this.productFilterInput.toLocaleLowerCase()) !== -1);
   }
 
 }

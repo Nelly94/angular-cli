@@ -19,7 +19,7 @@ export class ShowPriceDirective implements AfterContentInit{
   ngAfterContentInit() {
    this.calculatePrice();
   }
-  
+
   private calculatePrice() {
     this.finalPrice = this.price;
     if (this.promo !== null) {
