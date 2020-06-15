@@ -13,6 +13,7 @@ import { SupplierListComponent } from './supplier-list/supplier-list.component';
 import { SupplierComponent } from './supplier/supplier.component';
 import { BanckAccountPipePipe } from './banck-account-pipe.pipe';
 import { ShowPriceDirective } from './show-price.directive';
+import { ProductAddComponent } from './product-add/product-add.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ShowPriceDirective } from './show-price.directive';
     SupplierListComponent,
     SupplierComponent,
     BanckAccountPipePipe,
-    ShowPriceDirective
+    ShowPriceDirective,
+    ProductAddComponent
   ],
   imports: [
     BrowserModule,

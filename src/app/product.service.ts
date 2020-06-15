@@ -16,6 +16,10 @@ export class ProductService {
     return new Promise(resolve => resolve(this.products));
   }
 
+  public add(p: Product){
+    this.products.push(p);
+  }
+
   public getOne(index: number){
     return new Promise(resolve => resolve(this.products[index]));
   }

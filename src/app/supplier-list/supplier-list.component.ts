@@ -11,7 +11,7 @@ export class SupplierListComponent implements OnInit {
 
   constructor(private supplierService: SupplierService) { }
 
-  private suppliers: Supplier[];
+  suppliers: Supplier[];
 
   ngOnInit(): void {
     this.supplierService.getSuppliers().then(list => {this.suppliers = list;});
