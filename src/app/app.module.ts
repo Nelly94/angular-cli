@@ -12,6 +12,7 @@ import { NumberComponent } from './number/number.component';
 import { SupplierListComponent } from './supplier-list/supplier-list.component';
 import { SupplierComponent } from './supplier/supplier.component';
 import { BanckAccountPipePipe } from './banck-account-pipe.pipe';
+import { ShowPriceDirective } from './show-price.directive';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BanckAccountPipePipe } from './banck-account-pipe.pipe';
     NumberComponent,
     SupplierListComponent,
     SupplierComponent,
-    BanckAccountPipePipe
+    BanckAccountPipePipe,
+    ShowPriceDirective
   ],
   imports: [
     BrowserModule,

@@ -13,7 +13,9 @@ export class ProductListComponent implements OnInit {
   // product1: Product;
   // product2: Product;
   selectedProduct: string;
-  products = [new Product('Vodka bottle',  'Best russian alcohol'), new Product('Jamón', 'From Extremadura')];
+  products = [new Product('Vodka bottle',  'Best russian alcohol', 10, null),
+              new Product('Jamón', 'From Extremadura', 98, 15),
+              new Product('Caviar', 'Top quality', 9568, 2)];
   productFilterInput = '';
 
   ngOnInit(): void {
