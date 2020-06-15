@@ -10,17 +10,22 @@ export class ProductListComponent implements OnInit {
 
   constructor() { }
 
-  product1: Product;
-  product2: Product;
+  // product1: Product;
+  // product2: Product;
   selectedProduct: string;
+  products = [new Product('Vodka bottle',  'Best russian alcohol'), new Product('Jamón', 'From Extremadura')];
+  productFilterInput = '';
 
   ngOnInit(): void {
-    this.product1 = new Product('Vodka bottle',  'Best russian alcohol');
-    this.product2 = new Product('Jamón', 'From Extremadura');
   }
 
   updateSelection(productName: string){
     this.selectedProduct = productName;
+  }
+
+  filter(){
+    console.log(this.productFilterInput);
+    return this.products.filter(c => c.name.toLocaleLowerCase().indexOf(this.productFilterInput.toLocaleLowerCase()) !== -1);
   }
 
 }
