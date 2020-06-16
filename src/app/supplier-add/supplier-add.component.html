@@ -1,0 +1,15 @@
+<div *ngIf="!supplierForm.valid">
+  <ul>
+    <li *ngIf="supplierForm.controls['company']?.errors?.required">Company name is required</li>
+    <li *ngIf="supplierForm.controls['bankAccount']?.errors?.required">Bank account is required</li>
+  </ul>
+</div>
+
+<form [formGroup]="supplierForm" (ngSubmit)="add()">
+  <label for="companyControl">Company</label>
+  <input formControlName="company" type="text" id="companyControl"/>
+  <br>
+  <label for="bankAccountControl">Bank account</label>
+  <input formControlName="bankAccount" type="text" id="bankAccountControl" />
+  <button type="submit">Add</button>
+</form>

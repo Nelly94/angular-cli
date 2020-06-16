@@ -21,7 +21,7 @@ export class ProductService {
   }
 
   public getOne(index: number){
-    return new Promise(resolve => resolve(this.products[index]));
+    return new Promise<Product>(resolve => resolve(this.products[index]));
   }
 
   public delete(index: number){

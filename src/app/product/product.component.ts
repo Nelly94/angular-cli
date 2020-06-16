@@ -1,6 +1,7 @@
 import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../model/Product';
 import {ProductService} from '../product.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -9,7 +10,7 @@ import {ProductService} from '../product.service';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute) { }
 
   @Output()
   outputSelection: EventEmitter<string> = new EventEmitter();
@@ -18,6 +19,12 @@ export class ProductComponent implements OnInit {
   p: Product;
 
   ngOnInit(): void {
+    if (this.p == null || this.p === undefined){
+      this.route.params.subscribe(params => {
+        console.log(params.id);
+        this.productService.getOne(params.id).then(product => this.p = product);
+      });
+    }
   }
 
   @HostListener('click')
