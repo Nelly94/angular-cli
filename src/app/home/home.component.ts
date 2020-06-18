@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from '@angular/router';
+import {MatTabChangeEvent} from '@angular/material/tabs';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  navigate(event: MatTabChangeEvent) {
+    console.log(event.index);
+    if (event.index === 0) {
+      this.router.navigate(['/products']);
+    }else{
+      this.router.navigate(['/suppliers']);
+    }
+
   }
 
 }

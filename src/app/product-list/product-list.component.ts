@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Product} from '../model/Product';
 import {ProductService} from '../product.service';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-product-list',
@@ -9,14 +10,17 @@ import {ProductService} from '../product.service';
 })
 export class ProductListComponent implements OnInit {
 
-  constructor(private productService: ProductService) { }
+  constructor(private productService: ProductService, private userService: UserService) { }
 
   selectedProduct: string;
   productFilterInput = '';
   productList: Product[];
+  stringtrial: string;
 
   ngOnInit(): void {
     this.productService.getProducts().then(list => {this.productList = list;});
+    this.stringtrial = this.userService.getPosts();
+    console.log(this.stringtrial);
   }
 
   updateSelection(productName: string){

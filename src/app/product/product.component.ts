@@ -1,7 +1,8 @@
-import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, HostListener, Inject, Input, OnInit, Output} from '@angular/core';
 import {Product} from '../model/Product';
 import {ProductService} from '../product.service';
 import {ActivatedRoute} from '@angular/router';
+import {MAT_DIALOG_DATA, MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product',
@@ -10,7 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(private productService: ProductService, private route: ActivatedRoute) { }
+  constructor(private productService: ProductService, private route: ActivatedRoute, public dialog: MatDialog) { }
 
   @Output()
   outputSelection: EventEmitter<string> = new EventEmitter();
@@ -34,5 +35,33 @@ export class ProductComponent implements OnInit {
 
   delete(){
     this.productService.delete(this.p.id);
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      width: '250px',
+      // data: {name: this.name, animal: this.animal}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+      this.delete();
+    });
+  }
+
+}
+
+@Component({
+  selector: 'app-dialog',
+  templateUrl: './dialog.component.html',
+})
+export class DialogComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any) {}
+
+  onNoClick(): void {
+    this.dialogRef.close();
   }
 }

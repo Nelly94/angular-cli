@@ -1,2 +1,5 @@
-<a [routerLink]="['/products']">Products list</a>
-<a [routerLink]="['/suppliers']">Suppliers list</a>
+
+<mat-tab-group (selectedTabChange)="navigate($event)">
+  <mat-tab label="Suppliers list"></mat-tab>
+  <mat-tab label="Products list"></mat-tab>
+</mat-tab-group>
